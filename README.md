@@ -2,10 +2,12 @@
 Blog de Noticias en PHP y MySQL
 
 =================
+
 index.html
-php
---ProcesaBD.php
-Readme.txt
+/php
+  --ProcesaBD.php
+README.md
+
 =================
 
 Este proyecto muestra el título y contenido de cada noticia guardada en una BD en MySQL.
