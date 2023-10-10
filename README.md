@@ -21,4 +21,4 @@ Edita las variables en el archivo "php/ProcesaBD.php" para poner los datos de tu
 
 Si hosteas este proyecto, asegúrate de poner el nombre del host y el nombre de tu usuario y contraseña.
 
-### **Danel20** •{ *ProgramadorXS* }•
+#### **Danel20** •{ *ProgramadorXS* }•
