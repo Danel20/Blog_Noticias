@@ -20,8 +20,8 @@ Edita las variables en el archivo "php/ProcesaBD.php" para poner los datos de tu
 - $ConexionSQL = mysqli_connect('localhost','root','');
 
 Si hosteas este proyecto, asegúrate de poner el nombre del host y el nombre de tu usuario y contraseña.
- # ___                                                     _              __  __  ___ 
- #| _ \  _ _   ___   __ _   _ _   __ _   _ __    __ _   __| |  ___   _ _  \ \/ / / __|
- #|  _/ | '_| / _ \ / _` | | '_| / _` | | '  \  / _` | / _` | / _ \ | '_|  >  <  \__ \
- #|_|   |_|   \___/ \__, | |_|   \__,_| |_|_|_| \__,_| \__,_| \___/ |_|   /_/\_\ |___/
- #                  |___/                                                             
+#  ___                                                     _              __  __  ___ 
+# | _ \  _ _   ___   __ _   _ _   __ _   _ __    __ _   __| |  ___   _ _  \ \/ / / __|
+# |  _/ | '_| / _ \ / _` | | '_| / _` | | '  \  / _` | / _` | / _ \ | '_|  >  <  \__ \
+# |_|   |_|   \___/ \__, | |_|   \__,_| |_|_|_| \__,_| \__,_| \___/ |_|   /_/\_\ |___/
+                   |___/                                                             
