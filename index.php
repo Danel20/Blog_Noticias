@@ -7,7 +7,7 @@
 </head>
 <body>
 <?php
-include "php/ProcesaBD.php";
+include "php/view.php";
 ?>
 </body>
 </html>
