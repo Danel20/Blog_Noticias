@@ -17,9 +17,7 @@ Mete este proyecto en la ruta "C:\xampp\htdocs\" (cambia la letra de la unidad "
 Este proyecto muestra el título y contenido de cada noticia guardada en una BD en MySQL.
 La tabla de la BD contiene 2 columnas: "title" y "body" respectivamente.
 
-Al abrir "noticias.php" verás el mismo contenido pero en formato JSON.
-
-Edita las variables en el archivo "php/view.php" para poner los datos de tu Base de Datos.
+Al abrir "noticias.php" verás el mismo contenido pero en formato JSON. Edita las variables que aparecen en este php para poner los datos de tu Base de Datos y si usas el "index.php" edita las variables en "php/view.php".
 
 - **$NombreBD** - *Nombre de la Base de Datos*
 - **$NombreTabla** - *Nombre de la Tabla*
