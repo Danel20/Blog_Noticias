@@ -47,7 +47,7 @@ while($Recorrido = mysqli_fetch_array($Resultado)){
 
 
 /*MOSTRAR REGISTROS JSON*/
-function MostrarRegistrosJSON($a1, $a2) {
+function SacarListaDeRegistros($a1, $a2) {
     $Operacion = 'SELECT * FROM ' . $a2;
     $Resultado = mysqli_query($a1, $Operacion);
 
@@ -57,9 +57,8 @@ function MostrarRegistrosJSON($a1, $a2) {
         $Registros[] = $Recorrido;
     }
 
-    header("Content-Type: application/json");
-    echo json_encode($Registros);
-
+    
+    return $Registros
     mysqli_free_result($Resultado);
 }
 
