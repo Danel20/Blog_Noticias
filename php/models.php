@@ -46,7 +46,7 @@ while($Recorrido = mysqli_fetch_array($Resultado)){
 };
 
 
-/*MOSTRAR REGISTROS JSON*/
+/*SACAR LISTA DE REGISTROS*/
 function SacarListaDeRegistros($a1, $a2) {
     $Operacion = 'SELECT * FROM ' . $a2;
     $Resultado = mysqli_query($a1, $Operacion);
