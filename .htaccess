@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^api/noticias\.json$ api/noticias.php [L]
