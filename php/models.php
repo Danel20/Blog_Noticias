@@ -13,6 +13,7 @@ if($a1) {
 /* CREAR BASE DE DATOS */
 function CrearBD($a1,$a2){
 $Operacion='CREATE DATABASE IF NOT EXISTS '.$a2;
+mysqli_query($a1, $Operacion);
 /*Comprobar Conexión...
 if(mysqli_query($a1, $Operacion)) {
 	echo 'Base de Datos: -'.$a2.'- Creada.<br>';
@@ -27,6 +28,7 @@ function CrearTabla($a1,$a2){
 $Operacion='CREATE TABLE IF NOT EXISTS '.$a2.'(
 title VARCHAR(65) NOT NULL,
 body TEXT(3000) NOT NULL)';
+mysqli_query($a1, $Operacion);
 /*Comprobar Operacion...
 if(mysqli_query($a1, $Operacion)) {
 	echo 'Tabla -'.$a2.'- Creada<br>';
@@ -34,6 +36,12 @@ if(mysqli_query($a1, $Operacion)) {
 	echo 'Error Creando Tabla...<br>';
 };
 */
+};
+
+/*INSERTAR REGISTRO*/
+function InsertarRegistro($a1,$a2,$a3,$a4){
+$Operacion='INSERT INTO '.$a2.' (title, body) VALUES ("'.$a3.'", "'.$a4.'")';
+mysqli_query($a1, $Operacion);
 };
 
 /*MOSTRAR REGISTROS*/
