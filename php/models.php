@@ -66,7 +66,7 @@ function SacarListaDeRegistros($a1, $a2) {
     }
 
     
-    return $Registros
+    return $Registros;
     mysqli_free_result($Resultado);
 }
 
