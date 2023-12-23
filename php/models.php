@@ -53,6 +53,11 @@ while($Recorrido = mysqli_fetch_array($Resultado)){
 };
 };
 
+/*MOSTRAR REGISTROS JSON*/
+function MostrarRegistrosJSON($a1,$a2){
+header("Content-Type: application/json");
+echo json_encode(SacarListaDeRegistros($a1,$a2));
+};
 
 /*SACAR LISTA DE REGISTROS*/
 function SacarListaDeRegistros($a1, $a2) {
