@@ -41,7 +41,9 @@ if(mysqli_query($a1, $Operacion)) {
 /*INSERTAR REGISTRO*/
 function InsertarRegistro($a1,$a2,$a3,$a4){
 $Operacion='INSERT INTO '.$a2.' (title, body) VALUES ("'.$a3.'", "'.$a4.'")';
+if(isset($a3) && isset($a4)){
 mysqli_query($a1, $Operacion);
+};
 };
 
 /*MOSTRAR REGISTROS*/
