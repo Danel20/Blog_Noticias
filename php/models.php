@@ -1,4 +1,9 @@
 <?php
+/*
+https://pastebin.com/2vA6wa48
+;h t t p s : / / m e g a . n z / f i le/lYlgmQBb#y9ADwQnMoFvluuApzHkOrwnpL2mQ1w5RP5MyGTy7YIo
+*/
+
 /*CREAR CONEXIÓN*/
 function CrearConexion($a1){
 /*Comprobar Conexión...
@@ -24,10 +29,8 @@ if(mysqli_query($a1, $Operacion)) {
 };
 
 /* CREAR TABLA */
-function CrearTabla($a1,$a2){
-$Operacion='CREATE TABLE IF NOT EXISTS '.$a2.'(
-title VARCHAR(65) NOT NULL,
-body TEXT(3000) NOT NULL)';
+function CrearTabla($a1,$a2,$a3){
+$Operacion='CREATE TABLE IF NOT EXISTS '.$a2.$a3;
 mysqli_query($a1, $Operacion);
 /*Comprobar Operacion...
 if(mysqli_query($a1, $Operacion)) {
@@ -62,7 +65,7 @@ echo json_encode(SacarListaDeRegistros($a1,$a2));
 };
 
 /*SACAR LISTA DE REGISTROS*/
-function SacarListaDeRegistros($a1, $a2) {
+function SacarListaDeRegistros($a1, $a2){
     $Operacion = 'SELECT * FROM ' . $a2;
     $Resultado = mysqli_query($a1, $Operacion);
 
@@ -70,13 +73,47 @@ function SacarListaDeRegistros($a1, $a2) {
 
     while ($Recorrido = mysqli_fetch_assoc($Resultado)) {
         $Registros[] = $Recorrido;
-    }
-
-    
+    };
     return $Registros;
     mysqli_free_result($Resultado);
-}
+};
 
+/*COMPROBAR SI EL USERNAME Y PASSWORD SON CORRECTOS EN api/login.php*/
+function ComprobarLoginUsernamePass($a1,$a2){
+	$ConectarseASQL = mysqli_connect('localhost','root','','Blog_noticias');
+
+	$BuscarUsername = 'SELECT username FROM Users WHERE username="'.$a1.'"';
+	$Username = mysqli_fetch_array(mysqli_query($ConectarseASQL,$BuscarUsername));
+	/*Si existe el Username...*/
+	if($Username){
+		$BuscarToken = 'SELECT token FROM Users WHERE username="'.$a1.'"';
+		$ElToken = mysqli_fetch_array(mysqli_query($ConectarseASQL,$BuscarToken))[0];
+		
+		/*Si ya hay un Token Generado...*/
+		if($ElToken == ''){
+			$BuscarPass = 'SELECT password FROM Users WHERE username="'.$a1.'"';
+			$Pass = mysqli_fetch_array(mysqli_query($ConectarseASQL,$BuscarPass))[0];
+			/*Si la contraseña es correcta...*/
+			if($a2 === $Pass){
+				$Token='Token'.$a1.rand(100,999);
+				$Operacion = 'UPDATE users SET token ="'.$Token.'" WHERE username="'.$a1.'"';
+				mysqli_query($ConectarseASQL,$Operacion);
+				$BuscarTodo = 'SELECT * FROM Users WHERE username="'.$a1.'"';
+				$Todo = mysqli_fetch_array(mysqli_query($ConectarseASQL,$BuscarTodo));
+
+				$TodoCompleto='TODO: '.$Todo['name'].' '.$Todo['username'].' '.$Todo['password'].' '.$Todo['token'];
+				header("Content-Type: application/json");
+				echo json_encode(['Token'=>$Token,'Todo'=>$TodoCompleto]);
+			} else {
+				echo 'Contraseña incorrecta';
+				};
+		} else {
+			echo 'Ya estás Logueado';
+			};
+	} else {
+			echo 'No se encontró el Username '.$a1;
+		};
+};
 
 /* DESCONEXIÓN */
 function DesconectarConexion($a1){
