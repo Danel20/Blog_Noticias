@@ -1,9 +1,4 @@
 <?php
-/*
-https://pastebin.com/2vA6wa48
-;h t t p s : / / m e g a . n z / f i le/lYlgmQBb#y9ADwQnMoFvluuApzHkOrwnpL2mQ1w5RP5MyGTy7YIo
-*/
-
 /*CREAR CONEXIÓN*/
 function CrearConexion($a1){
 /*Comprobar Conexión...
@@ -78,7 +73,7 @@ function SacarListaDeRegistros($a1, $a2){
     mysqli_free_result($Resultado);
 };
 
-/*COMPROBAR SI EL USERNAME Y PASSWORD SON CORRECTOS EN api/login.php*/
+/*COMPROBAR SI EL USERNAME Y PASSWORD SON CORRECTOS/
 function ComprobarLoginUsernamePass($a1,$a2){
 	$ConectarseASQL = mysqli_connect('localhost','root','','Blog_noticias');
 
@@ -89,8 +84,6 @@ function ComprobarLoginUsernamePass($a1,$a2){
 		$BuscarToken = 'SELECT token FROM Users WHERE username="'.$a1.'"';
 		$ElToken = mysqli_fetch_array(mysqli_query($ConectarseASQL,$BuscarToken))[0];
 		
-		/*Si ya hay un Token Generado...*/
-		if($ElToken == ''){
 			$BuscarPass = 'SELECT password FROM Users WHERE username="'.$a1.'"';
 			$Pass = mysqli_fetch_array(mysqli_query($ConectarseASQL,$BuscarPass))[0];
 			/*Si la contraseña es correcta...*/
@@ -103,13 +96,10 @@ function ComprobarLoginUsernamePass($a1,$a2){
 
 				$TodoCompleto='TODO: '.$Todo['name'].' '.$Todo['username'].' '.$Todo['password'].' '.$Todo['token'];
 				header("Content-Type: application/json");
-				echo json_encode(['Token'=>$Token,'Todo'=>$TodoCompleto]);
+				echo json_encode(['Token'=>$Token]);
 			} else {
 				echo 'Contraseña incorrecta';
 				};
-		} else {
-			echo 'Ya estás Logueado';
-			};
 	} else {
 			echo 'No se encontró el Username '.$a1;
 		};
